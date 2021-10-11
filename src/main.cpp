@@ -61,6 +61,12 @@ int main() {
 		});
 		window.run();
 		return EXIT_SUCCESS;
+	} catch (GL::Shader::CompilationError const& e) {
+		std::clog << e.what() << '\n';
+		std::clog << std::string_view{ e.log_data.data(), e.log_data.size() } << std::endl;
+	} catch (GL::Program::LinkError const& e) {
+		std::clog << e.what() << '\n';
+		std::clog << std::string_view{ e.log_data.data(), e.log_data.size() } << std::endl;
 	} catch (GLEW::Error const& e) {
 		std::clog << e.what() << ": " << glewGetErrorString(e.code) << std::endl;
 		return EXIT_FAILURE;

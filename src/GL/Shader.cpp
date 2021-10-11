@@ -14,7 +14,6 @@ char const* Shader::CompilationError::what() const noexcept {
 Shader::CompilationError::CompilationError(GLuint handle) {
 	GLsizei log_length = 0;
 	glGetShaderiv(handle, GL_INFO_LOG_LENGTH, &log_length);
-	std::vector<char> log_data;
 	log_data.reserve(log_length);
 	glGetShaderInfoLog(handle, log_length, &log_length, log_data.data());
 }

@@ -10,7 +10,6 @@ char const* Program::LinkError::what() const noexcept {
 Program::LinkError::LinkError(GLuint handle) {
 	GLsizei log_length = 0;
 	glGetProgramiv(handle, GL_INFO_LOG_LENGTH, &log_length);
-	std::vector<char> log_data;
 	log_data.reserve(log_length);
 	glGetProgramInfoLog(handle, log_length, &log_length, log_data.data());
 }
